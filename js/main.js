@@ -18,15 +18,28 @@ class Portfolio {
     
     // Loading screen
     setupLoading() {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loadingScreen = document.querySelector('.loading-screen');
+        const hideLoading = () => {
+            const loadingScreen = document.querySelector('.loading-screen');
+            if (loadingScreen) {
                 loadingScreen.style.opacity = '0';
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
                 }, 500);
-            }, 1500);
+            }
+        };
+        
+        // Hide on window load
+        window.addEventListener('load', () => {
+            setTimeout(hideLoading, 800);
         });
+        
+        // Fallback: Force hide after 3 seconds no matter what
+        setTimeout(hideLoading, 3000);
+        
+        // Also hide on DOMContentLoaded as backup
+        if (document.readyState === 'complete') {
+            setTimeout(hideLoading, 800);
+        }
     }
     
     // Navigation
