@@ -1,6 +1,20 @@
-# Ramesh Kadariya - Portfolio
+# Ramesh Kadariya - Portfolio 🚀
 
-A modern, animated portfolio website showcasing mobile apps, web extensions, and AR filters.
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://rameshkadariya.github.io/rameshjisite/)
+[![GitHub](https://img.shields.io/badge/github-repo-blue)](https://github.com/RameshKadariya/rameshjisite)
+
+A next-level animated portfolio website showcasing mobile apps, web extensions, and AR filters with stunning 3D effects and smooth animations.
+
+## 🌟 Live Demo
+
+Visit: **[rameshkadariya.github.io/rameshjisite](https://rameshkadariya.github.io/rameshjisite/)**
+
+## 📱 Projects Showcased
+
+- **3 Android Apps** (Gen Z Word, Water Reminder, RelaxMe)
+- **2 Chrome Extensions**
+- **3 Snapchat Lenses**
+- **3 TikTok Filters**
 
 ## 🚀 Features
 
