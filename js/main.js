@@ -339,6 +339,232 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Certificate Modal Functions
+let currentCertIndex = 0;
+const certificates = [
+    {
+        title: 'Responsive Web Design',
+        issuer: 'freeCodeCamp',
+        file: 'certificate/WEB_Certificate_FREECODECAMP.png',
+        type: 'image'
+    },
+    {
+        title: 'Frontend Development',
+        issuer: 'Meta (Facebook)',
+        file: 'certificate/Frontend_Meta_Certificate.pdf',
+        type: 'pdf'
+    },
+    {
+        title: 'Flutter Development',
+        issuer: 'Code IT',
+        file: 'certificate/odeIT_Flutter_Certificate.pdf',
+        type: 'pdf'
+    },
+    {
+        title: 'Programming with JavaScript',
+        issuer: 'Meta (Facebook)',
+        file: 'certificate/Programming with JavaScript_Meta_Certificate.pdf',
+        type: 'pdf'
+    },
+    {
+        title: 'SQL Database',
+        issuer: 'Professional Certification',
+        file: 'certificate/SQL_Certificate.pdf',
+        type: 'pdf'
+    },
+    {
+        title: 'Version Control (Git)',
+        issuer: 'Meta (Facebook)',
+        file: 'certificate/Version_Control_Meta_Certificate.pdf',
+        type: 'pdf'
+    }
+];
+
+function openCertModal(index) {
+    currentCertIndex = index;
+    const modal = document.getElementById('certificateModal');
+    const certFrame = document.getElementById('certFrame');
+    const certTitle = document.getElementById('certTitle');
+    const certIssuer = document.getElementById('certIssuer');
+    const cert = certificates[index];
+    
+    // Show modal with animation
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 10);
+    
+    // Update certificate info
+    certTitle.textContent = cert.title;
+    certIssuer.textContent = cert.issuer;
+    
+    // Load certificate
+    loadCertificate(cert, certFrame);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+    const modal = document.getElementById('certificateModal');
+    modal.classList.remove('active');
+    
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+function nextCert() {
+    currentCertIndex = (currentCertIndex + 1) % certificates.length;
+    updateCertificate();
+}
+
+function prevCert() {
+    currentCertIndex = (currentCertIndex - 1 + certificates.length) % certificates.length;
+    updateCertificate();
+}
+
+function updateCertificate() {
+    const certFrame = document.getElementById('certFrame');
+    const certTitle = document.getElementById('certTitle');
+    const certIssuer = document.getElementById('certIssuer');
+    const cert = certificates[currentCertIndex];
+    
+    // Fade out animation
+    certFrame.style.opacity = '0';
+    certFrame.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+        certTitle.textContent = cert.title;
+        certIssuer.textContent = cert.issuer;
+        loadCertificate(cert, certFrame);
+        
+        // Fade in animation
+        setTimeout(() => {
+            certFrame.style.opacity = '1';
+            certFrame.style.transform = 'scale(1)';
+        }, 50);
+    }, 300);
+}
+
+function loadCertificate(cert, container) {
+    // Clear previous content
+    container.innerHTML = '';
+    
+    // Add loading state
+    const viewer = container.parentElement;
+    const existingLoader = viewer.querySelector('.cert-loading');
+    if (existingLoader) existingLoader.remove();
+    
+    const loader = document.createElement('div');
+    loader.className = 'cert-loading';
+    loader.innerHTML = `
+        <div class="cert-loading-spinner"></div>
+        <div class="cert-loading-text">Loading certificate...</div>
+    `;
+    viewer.appendChild(loader);
+    
+    if (cert.type === 'image') {
+        // For PNG images - show full size
+        const img = document.createElement('img');
+        img.onload = () => {
+            container.innerHTML = '';
+            container.style.padding = '0';
+            container.style.overflow = 'hidden';
+            container.appendChild(img);
+            if (loader && loader.parentElement) {
+                loader.remove();
+            }
+            container.style.opacity = '1';
+        };
+        img.onerror = () => {
+            console.error('Failed to load image:', cert.file);
+            loader.innerHTML = '<div class="cert-loading-text" style="color: #ff6b6b;">Failed to load certificate. Please check the file path.</div>';
+        };
+        img.src = cert.file;
+        img.alt = cert.title;
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'contain';
+        img.style.display = 'block';
+    } else {
+        // For PDF files - use iframe with proper zoom settings
+        container.style.padding = '0';
+        container.style.overflow = 'hidden';
+        
+        const iframe = document.createElement('iframe');
+        // Use zoom=page-fit to show full page
+        iframe.src = cert.file + '#view=Fit&pagemode=none&toolbar=0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.style.display = 'block';
+        
+        iframe.onload = () => {
+            if (loader && loader.parentElement) {
+                loader.remove();
+            }
+        };
+        
+        // Fallback: Remove loader after 2 seconds
+        setTimeout(() => {
+            if (loader && loader.parentElement) {
+                loader.remove();
+            }
+        }, 2000);
+        
+        container.appendChild(iframe);
+        container.style.opacity = '1';
+    }
+}
+
+// Keyboard navigation for certificate modal
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('certificateModal');
+    if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeCertModal();
+        } else if (e.key === 'ArrowRight') {
+            nextCert();
+        } else if (e.key === 'ArrowLeft') {
+            prevCert();
+        }
+    }
+});
+
+// Close modal on background click
+document.getElementById('certificateModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'certificateModal') {
+        closeCertModal();
+    }
+});
+
+// Touch swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.getElementById('certificateModal')?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.getElementById('certificateModal')?.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    const modal = document.getElementById('certificateModal');
+    if (modal && modal.classList.contains('active')) {
+        if (touchEndX < touchStartX - 50) {
+            // Swipe left - next certificate
+            nextCert();
+        }
+        if (touchEndX > touchStartX + 50) {
+            // Swipe right - previous certificate
+            prevCert();
+        }
+    }
+}
+
 // Initialize portfolio
 document.addEventListener('DOMContentLoaded', () => {
     new Portfolio();

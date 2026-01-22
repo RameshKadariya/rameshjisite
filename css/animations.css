@@ -473,3 +473,311 @@
     0% { filter: hue-rotate(0deg); }
     100% { filter: hue-rotate(360deg); }
 }
+
+/* Certificate Modal Animations */
+@keyframes certModalFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
+}
+
+@keyframes certContentZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes certViewerSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes certInfoSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes certNavBounce {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1);
+    }
+}
+
+@keyframes certGlowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+    }
+}
+
+@keyframes certBadgeRotate {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    to {
+        transform: rotate(360deg) scale(1.2);
+    }
+}
+
+@keyframes certShimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Apply animations to certificate modal */
+.cert-modal.active {
+    animation: certModalFadeIn 0.4s ease forwards;
+}
+
+.cert-modal.active .cert-modal-content {
+    animation: certContentZoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.cert-modal.active .cert-viewer {
+    animation: certViewerSlideIn 0.6s ease 0.2s forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.cert-modal.active .cert-info {
+    animation: certInfoSlideUp 0.6s ease 0.3s forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.cert-nav:hover {
+    animation: certNavBounce 0.6s ease infinite;
+}
+
+.cert-modal.active .cert-close {
+    animation: certBadgeRotate 0.8s ease 0.4s forwards;
+}
+
+/* Certificate card hover effects */
+.certificate-card:hover .certificate-badge {
+    animation: certGlowPulse 2s ease infinite;
+}
+
+.certificate-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.certificate-card:hover::after {
+    left: 200%;
+}
+
+/* Certificate viewer loading animation */
+@keyframes certPulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.cert-loading {
+    animation: certPulse 1.5s ease infinite;
+}
+
+/* Certificate transition effects */
+.cert-transition-out {
+    animation: certSlideOut 0.3s ease forwards;
+}
+
+.cert-transition-in {
+    animation: certSlideIn 0.3s ease forwards;
+}
+
+@keyframes certSlideOut {
+    to {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes certSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Certificate badge special effects */
+.certificate-badge::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--primary),
+        transparent
+    );
+    border-radius: 50%;
+    opacity: 0;
+    animation: certBadgeSpin 3s linear infinite;
+}
+
+.certificate-card:hover .certificate-badge::before {
+    opacity: 0.3;
+}
+
+@keyframes certBadgeSpin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Certificate download button ripple effect */
+.certificate-download::before,
+.certificate-view::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+}
+
+.certificate-download:active::before,
+.certificate-view:active::before {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Certificate modal backdrop blur effect */
+.cert-modal {
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.3s ease;
+}
+
+.cert-modal.active {
+    backdrop-filter: blur(10px);
+}
+
+/* Certificate frame border animation */
+.cert-viewer::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+    );
+    background-size: 300% 300%;
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0;
+    animation: certBorderFlow 3s ease infinite;
+}
+
+.cert-modal.active .cert-viewer::after {
+    opacity: 0.5;
+}
+
+@keyframes certBorderFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Certificate info text animation */
+.cert-info h3 {
+    background-size: 200% auto;
+    animation: certTextShine 3s linear infinite;
+}
+
+@keyframes certTextShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Smooth certificate card entrance */
+.certificate-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: certCardFadeIn 0.6s ease forwards;
+}
+
+.certificate-card:nth-child(1) { animation-delay: 0.1s; }
+.certificate-card:nth-child(2) { animation-delay: 0.2s; }
+.certificate-card:nth-child(3) { animation-delay: 0.3s; }
+.certificate-card:nth-child(4) { animation-delay: 0.4s; }
+.certificate-card:nth-child(5) { animation-delay: 0.5s; }
+.certificate-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes certCardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -248,43 +248,47 @@
                 <h2 class="section-title">Certifications</h2>
             </div>
             <div class="certificates-grid">
-                <div class="certificate-card" data-tilt>
+                <div class="certificate-card" data-tilt data-cert="0">
                     <div class="certificate-badge">
-                        <div class="badge-icon">🏆</div>
+                        <div class="badge-icon">🎓</div>
                         <div class="badge-glow"></div>
                     </div>
                     <div class="certificate-content">
                         <h3>Responsive Web Design</h3>
                         <p class="certificate-issuer">freeCodeCamp</p>
                         <p class="certificate-desc">Completed comprehensive web design certification covering HTML5, CSS3, responsive design principles, and accessibility.</p>
-                        <a href="https://freecodecamp.org/certification/Ramesh_Kadariya/responsive-web-design" target="_blank" class="certificate-link magnetic">
-                            <span>View Certificate</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(0)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/WEB_Certificate_FREECODECAMP.png" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="certificate-card" data-tilt>
+                <div class="certificate-card" data-tilt data-cert="1">
                     <div class="certificate-badge">
                         <div class="badge-icon">📘</div>
                         <div class="badge-glow"></div>
                     </div>
                     <div class="certificate-content">
-                        <h3>Facebook Marketing</h3>
-                        <p class="certificate-issuer">Coursera</p>
-                        <p class="certificate-desc">Professional certification in digital marketing, social media strategy, and Facebook advertising platforms.</p>
-                        <a href="https://coursera.org/verify/5FWUMNZS3RYS" target="_blank" class="certificate-link magnetic">
-                            <span>View Certificate</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
+                        <h3>Frontend Development</h3>
+                        <p class="certificate-issuer">Meta (Facebook)</p>
+                        <p class="certificate-desc">Professional certification in modern frontend development, React, and web technologies from Meta.</p>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(1)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/Frontend_Meta_Certificate.pdf" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="certificate-card" data-tilt>
+                <div class="certificate-card" data-tilt data-cert="2">
                     <div class="certificate-badge">
                         <div class="badge-icon">📱</div>
                         <div class="badge-glow"></div>
@@ -293,17 +297,95 @@
                         <h3>Flutter Development</h3>
                         <p class="certificate-issuer">Code IT</p>
                         <p class="certificate-desc">Advanced mobile app development training with Flutter framework, covering cross-platform development and UI/UX.</p>
-                        <a href="https://codeit.com.np/asset/img/certificate1.jpg" target="_blank" class="certificate-link magnetic">
-                            <span>View Certificate</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(2)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/odeIT_Flutter_Certificate.pdf" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-tilt data-cert="3">
+                    <div class="certificate-badge">
+                        <div class="badge-icon">💻</div>
+                        <div class="badge-glow"></div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Programming with JavaScript</h3>
+                        <p class="certificate-issuer">Meta (Facebook)</p>
+                        <p class="certificate-desc">Comprehensive JavaScript programming certification covering ES6+, async programming, and modern practices.</p>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(3)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/Programming with JavaScript_Meta_Certificate.pdf" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-tilt data-cert="4">
+                    <div class="certificate-badge">
+                        <div class="badge-icon">🗄️</div>
+                        <div class="badge-glow"></div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>SQL Database</h3>
+                        <p class="certificate-issuer">Professional Certification</p>
+                        <p class="certificate-desc">Database management and SQL programming certification covering queries, optimization, and database design.</p>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(4)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/SQL_Certificate.pdf" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-tilt data-cert="5">
+                    <div class="certificate-badge">
+                        <div class="badge-icon">🔀</div>
+                        <div class="badge-glow"></div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Version Control (Git)</h3>
+                        <p class="certificate-issuer">Meta (Facebook)</p>
+                        <p class="certificate-desc">Version control systems certification covering Git, GitHub, collaboration workflows, and best practices.</p>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(5)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/Version_Control_Meta_Certificate.pdf" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="cert-modal">
+        <div class="cert-modal-content">
+            <button class="cert-close" onclick="closeCertModal()">&times;</button>
+            <button class="cert-nav cert-prev" onclick="prevCert()">‹</button>
+            <button class="cert-nav cert-next" onclick="nextCert()">›</button>
+            <div class="cert-viewer">
+                <div id="certFrame"></div>
+            </div>
+            <div class="cert-info">
+                <h3 id="certTitle"></h3>
+                <p id="certIssuer"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
