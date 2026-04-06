@@ -3,29 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramesh Kadariya - Mobile & Web Developer</title>
-    <meta name="description" content="Ramesh Kadariya - Mobile Developer, Web Developer, AR Filter Creator. Building Android apps, Chrome extensions, and creative AR experiences.">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <title>Ramesh Kadariya - Developer & Researcher</title>
+    <meta name="description" content="Ramesh Kadariya - Mobile Developer, Web Developer, AR Filter Creator, Researcher. Building Android apps, Chrome extensions, and creative AR experiences.">
+    <link rel="stylesheet" href="css/main.css?v=3.0">
+    <link rel="stylesheet" href="css/animations.css?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-        <div class="loader">
-            <div class="loader-text">RAMESH<span class="loader-dot">.</span></div>
-            <div class="loader-bar"></div>
+    <!-- BREAKING NEWS TICKER -->
+    <div class="news-ticker">
+        <div class="news-label">🔴 LIVE</div>
+        <div class="news-content">
+            <span class="news-item">🚨 BREAKING: Developer spotted coding at 3 AM... again! Coffee machine filed for overtime! ☕</span>
+            <span class="news-item">💥 URGENT: New VS Code extension "Fahh & Ghop Ghop" causes 90% increase in developer happiness! Side effects: Uncontrollable laughter! 😂</span>
+            <span class="news-item">🔥 ROAST ALERT: Your code has more bugs than a rainforest! But Ramesh's code? Chef's kiss! 👨‍🍳</span>
+            <span class="news-item">📊 Research paper on Vector Databases goes viral - AI community shocked! "How did he make it so simple?" 🤯</span>
+            <span class="news-item">🏆 Local developer masters Flutter, Android, Web, AND AR filters - Scientists suspect he's actually 3 developers in a trench coat! 🧥</span>
+            <span class="news-item">⚡ BREAKING: Portfolio website so good, recruiters forming queue! HR departments nationwide in panic mode! 📞</span>
+            <span class="news-item">🎬 Scientists confirm: This portfolio has more animations than a Pixar movie! Disney wants to hire the animator! 🎨</span>
+            <span class="news-item">💼 Job market update: Companies offering unlimited pizza just to get an interview! 🍕</span>
+            <span class="news-item">🎮 GAMING NEWS: Developer completes Konami code in real life - unlocks secret achievement! ⬆️⬆️⬇️⬇️</span>
+            <span class="news-item">🌟 MOTIVATION: Remember, your bugs are just features waiting to be discovered! (Ramesh has no bugs tho) ✨</span>
+            <span class="news-item">🤖 AI ALERT: ChatGPT asked Ramesh for coding advice! Even robots need help sometimes! 🦾</span>
+            <span class="news-item">📱 TECH NEWS: 3 Android apps, 2 Chrome extensions, 6 AR filters - Is this guy even sleeping? 😴</span>
         </div>
     </div>
 
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
     <!-- Scroll Progress -->
     <div class="scroll-progress"></div>
+
+    <!-- Floating Side Navigation - NEW! -->
+    <div class="side-nav">
+        <div class="side-nav-item" data-section="home">
+            <span>🏠</span>
+            <div class="side-nav-label">HOME</div>
+        </div>
+        <div class="side-nav-item" data-section="about">
+            <span>👤</span>
+            <div class="side-nav-label">ABOUT</div>
+        </div>
+        <div class="side-nav-item" data-section="skills">
+            <span>⚡</span>
+            <div class="side-nav-label">SKILLS</div>
+        </div>
+        <div class="side-nav-item" data-section="certificates">
+            <span>🏆</span>
+            <div class="side-nav-label">CERTIFICATES</div>
+        </div>
+        <div class="side-nav-item" data-section="projects">
+            <span>💼</span>
+            <div class="side-nav-label">PROJECTS</div>
+        </div>
+        <div class="side-nav-item" data-section="research">
+            <span>📚</span>
+            <div class="side-nav-label">RESEARCH</div>
+        </div>
+        <div class="side-nav-item" data-section="cv">
+            <span>📄</span>
+            <div class="side-nav-label">CV</div>
+        </div>
+        <div class="side-nav-item" data-section="contact">
+            <span>📧</span>
+            <div class="side-nav-label">CONTACT</div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -36,16 +82,10 @@
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#certificates" class="nav-link">Certificates</a></li>
+            <li><a href="#certificates" class="nav-link">Certs</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-        <div class="theme-toggle">
-            <input type="checkbox" id="theme-switch">
-            <label for="theme-switch" class="theme-label">
-                <span class="sun">☀️</span>
-                <span class="moon">🌙</span>
-            </label>
         </div>
         <div class="hamburger">
             <span></span>
@@ -60,19 +100,17 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-line">Hi, I'm</span>
-                    <span class="title-name">Ramesh Kadariya</span>
-                </h1>
-                <div class="hero-subtitle">
-                    <span class="typing-text"></span>
-                    <span class="cursor-blink">|</span>
-                </div>
-                <p class="hero-description">
-                    Creating innovative mobile apps, web extensions, and immersive AR experiences. 
-                    Turning ideas into reality, one line of code at a time.
-                </p>
+            <h1 class="hero-title">
+                <span class="glitch" data-text="RAMESH">RAMESH</span><br>
+                <span class="glitch" data-text="KADARIYA">KADARIYA</span>
+            </h1>
+            <div class="hero-subtitle">
+                <span class="typing-text"></span>
+            </div>
+            <p class="hero-description">
+                Building innovative mobile apps, web extensions, AR experiences, and conducting research in AI & Blockchain. 
+                Turning ideas into reality, one line of code at a time.
+            </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary magnetic">
                         <span>View My Work</span>
@@ -367,6 +405,26 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="certificate-card" data-tilt data-cert="6">
+                    <div class="certificate-badge">
+                        <div class="badge-icon">🗃️</div>
+                        <div class="badge-glow"></div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Relational Database</h3>
+                        <p class="certificate-issuer">freeCodeCamp</p>
+                        <p class="certificate-desc">Comprehensive database certification covering relational database design, SQL queries, normalization, and database management.</p>
+                        <div class="certificate-actions">
+                            <button class="certificate-view magnetic" onclick="openCertModal(6)">
+                                <span>View Certificate</span>
+                            </button>
+                            <a href="certificate/RelationalDatabase.png" download class="certificate-download magnetic">
+                                <span>Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -601,6 +659,89 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- VS Code Extension -->
+                <div class="project-card web" data-tilt style="border: 2px solid #ff6b6b;">
+                    <div class="project-image" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 159, 64, 0.3));">
+                        <div class="project-overlay">
+                            <a href="https://marketplace.visualstudio.com/items?itemName=RameshJi.terminal-error-audio-alerts" target="_blank" class="project-link">View Extension</a>
+                        </div>
+                        <div class="project-icon">🔥</div>
+                        <div style="position: absolute; top: 1rem; right: 1rem; background: #ff6b6b; color: white; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; animation: pulse 2s infinite;">HOT 🔥</div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">VS Code Extension</span>
+                        <h3>Fahh & Ghop Ghop - Terminal Error Alerts</h3>
+                        <p>Hilarious audio alerts for terminal errors! Get instant sound notifications when your code breaks</p>
+                        <div class="project-tech">
+                            <span>VS Code</span>
+                            <span>TypeScript</span>
+                            <span>Audio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Papers Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">📚 PUBLICATIONS</span>
+                <h2 class="section-title">Research Papers</h2>
+            </div>
+            <div class="papers-grid">
+                <div class="paper-card">
+                    <div class="paper-badge">📊</div>
+                    <h3>Vector Databases for RAG Pipelines</h3>
+                    <p class="paper-meta">ResearchGate • 2024</p>
+                    <p class="paper-desc">Experimental analysis of vector databases for Retrieval-Augmented Generation pipelines, comparing performance and scalability.</p>
+                    <div class="paper-actions">
+                        <button onclick="openPaperModal('Published Paper/VectorDB_RAG_Research_Paper_Kadariya_v2.pdf', 'Vector Databases for RAG Pipelines')" class="btn btn-primary">📄 View PDF</button>
+                        <a href="https://www.researchgate.net/publication/403505351" target="_blank" class="btn btn-secondary">🔗 ResearchGate</a>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-badge">🤖</div>
+                    <h3>SQL vs AI-Augmented Databases</h3>
+                    <p class="paper-meta">ResearchGate • 2024</p>
+                    <p class="paper-desc">Comparative analysis of traditional SQL and AI-augmented database systems, exploring intelligent query optimization.</p>
+                    <div class="paper-actions">
+                        <a href="https://www.researchgate.net/publication/403018005" target="_blank" class="btn btn-primary">🔗 Read Paper</a>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-badge">⛓️</div>
+                    <h3>Layer 2 Blockchain Scalability</h3>
+                    <p class="paper-meta">Zenodo • 2024</p>
+                    <p class="paper-desc">Evaluating Layer 2 blockchain scalability through comparative study of Rollups and State Channels.</p>
+                    <div class="paper-actions">
+                        <button onclick="openPaperModal('Published Paper/Evaluating Layer 2 Blockchain Scalability through a Comparative Study of Rollups and State Channels.pdf', 'Layer 2 Blockchain Scalability')" class="btn btn-primary">📄 View PDF</button>
+                        <a href="https://zenodo.org/records/18232978" target="_blank" class="btn btn-secondary">🔗 Zenodo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">📄 RESUME</span>
+                <h2 class="section-title">Curriculum Vitae</h2>
+            </div>
+            <div class="cv-container-main">
+                <div class="cv-actions-main">
+                    <a href="Ramesh_Kadariya_CV.pdf" download class="btn btn-primary">📥 Download CV</a>
+                    <a href="Ramesh_Kadariya_CV.pdf" target="_blank" class="btn btn-secondary">🔗 Open in New Tab</a>
+                </div>
+                <div class="cv-viewer-main">
+                    <iframe src="Ramesh_Kadariya_CV.pdf#view=FitH" type="application/pdf"></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -695,8 +836,23 @@
         </div>
     </footer>
 
-    <script src="js/particles.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Paper PDF Modal -->
+    <div id="paperModal" class="cert-modal">
+        <div class="cert-modal-content">
+            <button class="cert-close" onclick="closePaperModal()">&times;</button>
+            <div class="cert-viewer">
+                <iframe id="paperFrame" src=""></iframe>
+            </div>
+            <div class="cert-info">
+                <h3 id="paperTitle"></h3>
+                <p>Research Paper by Ramesh Kadariya</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/particles.js?v=4.0"></script>
+    <script src="js/animations.js?v=4.0"></script>
+    <script src="js/main.js?v=4.0"></script>
+    <script src="js/surprises.js?v=5.0"></script>
 </body>
 </html>

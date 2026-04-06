@@ -6,40 +6,49 @@ class Portfolio {
     }
     
     init() {
-        this.setupLoading();
         this.setupNavigation();
-        this.setupThemeToggle();
+        this.setupSideNavigation();
         this.setupScrollProgress();
         this.setupCustomCursor();
         this.setupProjectFilters();
         this.setupContactForm();
-        this.setupScrollIndicator();
+        this.setupAnimations();
     }
     
-    // Loading screen
-    setupLoading() {
-        const hideLoading = () => {
-            const loadingScreen = document.querySelector('.loading-screen');
-            if (loadingScreen) {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }
-        };
+    // Side Navigation
+    setupSideNavigation() {
+        const sideNavItems = document.querySelectorAll('.side-nav-item');
+        const sections = document.querySelectorAll('section');
         
-        // Hide on window load
-        window.addEventListener('load', () => {
-            setTimeout(hideLoading, 800);
+        // Click navigation
+        sideNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const section = item.dataset.section;
+                const target = document.getElementById(section);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
         
-        // Fallback: Force hide after 3 seconds no matter what
-        setTimeout(hideLoading, 3000);
-        
-        // Also hide on DOMContentLoaded as backup
-        if (document.readyState === 'complete') {
-            setTimeout(hideLoading, 800);
-        }
+        // Active state on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            sideNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
     }
     
     // Navigation
@@ -47,6 +56,7 @@ class Portfolio {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
+        const navbar = document.querySelector('.navbar');
         
         // Toggle mobile menu
         hamburger?.addEventListener('click', () => {
@@ -98,14 +108,11 @@ class Portfolio {
                 }
             });
             
-            // Navbar background on scroll
-            const navbar = document.querySelector('.navbar');
+            // Navbar style on scroll
             if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(15, 15, 30, 0.95)';
-                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.background = 'rgba(15, 15, 30, 0.8)';
-                navbar.style.boxShadow = 'none';
+                navbar.classList.remove('scrolled');
             }
         });
     }
@@ -146,10 +153,10 @@ class Portfolio {
     // Custom cursor
     setupCustomCursor() {
         const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        if (!cursor) return;
         
         let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
         
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
@@ -159,39 +166,21 @@ class Portfolio {
             cursor.style.top = mouseY + 'px';
         });
         
-        // Smooth follower animation
-        const animateFollower = () => {
-            const distX = mouseX - followerX;
-            const distY = mouseY - followerY;
-            
-            followerX += distX * 0.1;
-            followerY += distY * 0.1;
-            
-            cursorFollower.style.left = followerX + 'px';
-            cursorFollower.style.top = followerY + 'px';
-            
-            requestAnimationFrame(animateFollower);
-        };
-        animateFollower();
-        
         // Cursor effects on hover
-        const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card');
+        const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card, .side-nav-item');
         hoverElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(1.5)';
-                cursorFollower.style.transform = 'scale(1.5)';
+                cursor.classList.add('active');
             });
             
             element.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursorFollower.style.transform = 'scale(1)';
+                cursor.classList.remove('active');
             });
         });
         
         // Hide cursor on mobile
         if (window.innerWidth < 768) {
             cursor.style.display = 'none';
-            cursorFollower.style.display = 'none';
         }
     }
     
@@ -377,8 +366,53 @@ const certificates = [
         issuer: 'Meta (Facebook)',
         file: 'certificate/Version_Control_Meta_Certificate.pdf',
         type: 'pdf'
+    },
+    {
+        title: 'Relational Database',
+        issuer: 'freeCodeCamp',
+        file: 'certificate/RelationalDatabase.png',
+        type: 'image'
     }
 ];
+
+// Paper Modal Functions
+function openPaperModal(file, title) {
+    const modal = document.getElementById('paperModal');
+    const frame = document.getElementById('paperFrame');
+    const titleEl = document.getElementById('paperTitle');
+    
+    titleEl.textContent = title;
+    frame.src = file + '#view=Fit&pagemode=none';
+    
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('active'), 10);
+    document.body.style.overflow = 'hidden';
+}
+
+function closePaperModal() {
+    const modal = document.getElementById('paperModal');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+// Close on background click
+document.getElementById('paperModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'paperModal') {
+        closePaperModal();
+    }
+});
+
+// ESC key to close
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closePaperModal();
+    }
+});
+
+// Certificate Modal Functions
 
 function openCertModal(index) {
     currentCertIndex = index;
